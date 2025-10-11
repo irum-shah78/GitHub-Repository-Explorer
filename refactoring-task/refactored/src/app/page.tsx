@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { Issue, IssueStatus, IssuePriority, SortField, SortOrder } from './types/issue';
-import { issues } from './constants/issues.json';
-import { IssueCard } from './components/IssueCard';
 import { IssueFilters } from './components/IssueFilters';
+import { Issue,  IssueStatus, IssuePriority, SortField, SortOrder } from './types/issue';
+import { IssueCard } from './components/IssueCard';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { useIssueFilters } from './hooks/useIssueFilters';
 import { useIssueSorting } from './hooks/useIssueSorting';
+import issuesData from '../../../src/app/constants/issues.json';
+
+const issues = issuesData as Issue[];
 
 export default function IssueTracker() {
   const [allIssues, setAllIssues] = useState<Issue[]>([]);
@@ -29,17 +31,14 @@ export default function IssueTracker() {
     toggleSortOrder
   } = useIssueSorting();
 
-  // Simulate API call with proper error handling
   useEffect(() => {
     const fetchIssues = async () => {
       try {
-        setIsLoading(true);
-        // Simulate network delay
+        setIsLoading(true); 
         await new Promise(resolve => setTimeout(resolve, 1000));
         setAllIssues(issues as Issue[]);
       } catch (error) {
         console.error('Failed to fetch issues:', error);
-        // In a real app, you'd show an error message to the user
       } finally {
         setIsLoading(false);
       }
@@ -48,11 +47,9 @@ export default function IssueTracker() {
     fetchIssues();
   }, []);
 
-  // Memoized filtered and sorted issues for better performance
   const processedIssues = useMemo(() => {
     let filtered = allIssues;
 
-    // Apply search filter
     if (searchTerm.trim()) {
       const searchLower = searchTerm.toLowerCase();
       filtered = filtered.filter(issue => 
@@ -62,24 +59,20 @@ export default function IssueTracker() {
       );
     }
 
-    // Apply status filter
     if (statusFilter !== 'all') {
       filtered = filtered.filter(issue => issue.status === statusFilter);
     }
 
-    // Apply priority filter
     if (priorityFilter !== 'all') {
       filtered = filtered.filter(issue => issue.priority === priorityFilter);
     }
 
-    // Apply sorting
     return filtered.sort((a, b) => {
       const comparison = compareIssues(a, b, sortField);
       return sortOrder === 'asc' ? comparison : -comparison;
     });
   }, [allIssues, searchTerm, statusFilter, priorityFilter, sortField, sortOrder]);
 
-  // Optimized comparison function for sorting
   const compareIssues = useCallback((a: Issue, b: Issue, field: SortField): number => {
     switch (field) {
       case 'title':
@@ -106,7 +99,7 @@ export default function IssueTracker() {
       toggleSortOrder();
     } else {
       updateSortField(field);
-      updateSortOrder('asc'); // Default to ascending for new field
+      updateSortOrder('asc');
     }
   }, [sortField, updateSortField, updateSortOrder, toggleSortOrder]);
 

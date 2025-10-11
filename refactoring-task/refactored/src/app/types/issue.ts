@@ -1,4 +1,3 @@
-// Type definitions for better type safety and code clarity
 export type IssueStatus = 'open' | 'in-progress' | 'closed';
 export type IssuePriority = 'high' | 'medium' | 'low';
 export type SortField = 'title' | 'status' | 'priority' | 'assignee' | 'createdDate';
@@ -14,12 +13,10 @@ export interface Issue {
   description: string;
 }
 
-// Constants for better maintainability
 export const ISSUE_STATUSES: IssueStatus[] = ['open', 'in-progress', 'closed'];
 export const ISSUE_PRIORITIES: IssuePriority[] = ['high', 'medium', 'low'];
 export const SORT_FIELDS: SortField[] = ['title', 'status', 'priority', 'assignee', 'createdDate'];
 
-// Utility functions for consistent styling
 export const getStatusBadgeClasses = (status: IssueStatus): string => {
   const statusClasses: Record<IssueStatus, string> = {
     'open': 'bg-green-100 text-green-800',
@@ -38,7 +35,6 @@ export const getPriorityBadgeClasses = (priority: IssuePriority): string => {
   return priorityClasses[priority];
 };
 
-// Date formatting utility
 export const formatIssueDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString('en-US', {
     year: 'numeric',

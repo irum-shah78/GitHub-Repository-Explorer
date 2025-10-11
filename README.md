@@ -2,17 +2,17 @@ Bitsmith Task
 
 This repository contains submission for the Bitsmith Task, featuring three main tasks:
 
-## 🚀 Task 1: GitHub Repository Explorer (Next.js)
+## Task 1: GitHub Repository Explorer (Next.js)
 
 A modern, responsive GitHub repository explorer built with Next.js, TypeScript, and TailwindCSS.
 
 ### Features
-- ✅ Fetch and display repositories with 5000+ stars using GitHub API
-- ✅ Pagination with "Next" and "Previous" buttons
-- ✅ Search functionality for repositories
-- ✅ Responsive design for desktop and mobile
-- ✅ Real-time data fetching with error handling
-- ✅ Modern UI with dark mode support
+- Fetch and display repositories with 5000+ stars using GitHub API
+- Pagination with "Next" and "Previous" buttons
+- Search functionality for repositories
+- Responsive design for desktop and mobile
+- Real-time data fetching with error handling
+- Modern UI with dark mode support
 
 ### Tech Stack
 - **Frontend**: Next.js 14, React 18, TypeScript
@@ -26,7 +26,7 @@ npm install
 npm run dev
 ```
 
-## 🏗️ Task 2: Architecture Design - ChatFlow
+## Task 2: Architecture Design - ChatFlow
 
 Comprehensive architecture design for a real-time chat application.
 
@@ -45,7 +45,7 @@ Comprehensive architecture design for a real-time chat application.
 - Admin controls and moderation
 - Scalable infrastructure for millions of users
 
-## 🔧 Task 3: Code Refactoring
+## Task 3: Code Refactoring
 
 Refactoring of an existing Issue Tracker application to improve code quality and maintainability.
 
@@ -66,7 +66,7 @@ Refactoring of an existing Issue Tracker application to improve code quality and
 - **Before**: Repeated code and magic strings
 - **After**: Reusable utilities and constants
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 bitsmith-task/
@@ -92,7 +92,7 @@ bitsmith-task/
         └── refactoring-documentation.md
 ```
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 ### Frontend
 - **Next.js 14** - React framework with App Router
@@ -112,7 +112,7 @@ bitsmith-task/
 - **Prettier** - Code formatting
 - **Git** - Version control
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ (Note: Current setup uses Node 16 with compatibility workarounds)
@@ -144,7 +144,7 @@ npm run dev
 # Compare refactoring-task/src/ vs refactoring-task/refactored/
 ```
 
-## 📝 Key Highlights
+## Key Highlights
 
 ### Task 1 - GitHub Repository Explorer
 - **Modern UI**: Clean, responsive design with TailwindCSS
@@ -164,34 +164,27 @@ npm run dev
 - **Maintainability**: Clean, modular code structure
 - **Best Practices**: React and TypeScript best practices
 
-## 🎯 Assessment Criteria Met
+## Assessment Criteria Met
 
-### Coding Task ✅
-- Next.js with TypeScript and TailwindCSS
+### Coding Task - Next.js with TypeScript and TailwindCSS
 - GitHub API integration
 - Pagination and search functionality
 - Responsive design
 - Error handling and loading states
 
-### Architecture Task ✅
-- Visual diagram (Mermaid)
+### Architecture Task - Visual diagram (Mermaid)
 - Comprehensive documentation
 - Tech stack justification
 - Database design with relationships
 - Scalability and performance considerations
 - Security and monitoring strategies
 
-### Refactoring Task ✅
-- Improved readability and maintainability
+### Refactoring Task - Improved readability and maintainability
 - Removed code duplication
 - Better naming conventions
 - Optimized logic and performance
 - Documented changes with explanations
 
-## 📞 Contact
+## Contact
 
 For questions about this submission, please contact me through the provided channels.
-
----
-
-**Note**: This project was completed within the 2-hour time limit as specified in the assessment requirements.

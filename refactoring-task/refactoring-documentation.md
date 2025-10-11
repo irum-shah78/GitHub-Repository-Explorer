@@ -1,14 +1,14 @@
 # Code Refactoring Documentation
 
 ## Overview
-This document outlines the refactoring improvements made to the Issue Tracker application, focusing on code readability, maintainability, and performance optimization.
+This document outlines the refactoring improvements made to the Issue Tracker application, focusing on code readability, maintainability and performance optimization.
 
 ## Key Improvements Made
 
 ### 1. **Type Safety and Code Clarity**
 - **Before**: Inline type definitions scattered throughout components
 - **After**: Centralized type definitions in `types/issue.ts`
-- **Benefits**: Better IntelliSense, compile-time error checking, and code reusability
+- **Benefits**: Better IntelliSense, compile-time error checking and code reusability
 
 ```typescript
 // Before: Inline types
@@ -168,7 +168,7 @@ export const getStatusBadgeClasses = (status: IssueStatus): string => {
 
 ### 8. **Accessibility Improvements**
 - **Before**: Basic HTML without accessibility considerations
-- **After**: Proper ARIA labels, semantic HTML, and keyboard navigation
+- **After**: Proper ARIA labels, semantic HTML and keyboard navigation
 - **Benefits**: Better accessibility for users with disabilities
 
 ```typescript
@@ -258,4 +258,4 @@ The refactored structure makes it easier to add:
 
 ## Conclusion
 
-The refactoring significantly improves code quality, maintainability, and performance while maintaining the same functionality. The new structure follows React best practices and makes the codebase more scalable and easier to work with for future development.
+The refactoring significantly improves code quality, maintainability and performance while maintaining the same functionality. The new structure follows React best practices and makes the codebase more scalable and easier to work with for future development.

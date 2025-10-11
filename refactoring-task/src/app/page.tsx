@@ -24,7 +24,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API call
     setTimeout(() => {
       setAllIssues(issues);
       setFilteredIssues(issues);
@@ -35,7 +34,6 @@ export default function Home() {
   useEffect(() => {
     let filtered = allIssues;
 
-    // Apply search filter
     if (searchTerm) {
       filtered = filtered.filter(issue => 
         issue.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -44,17 +42,14 @@ export default function Home() {
       );
     }
 
-    // Apply status filter
     if (statusFilter !== 'all') {
       filtered = filtered.filter(issue => issue.status === statusFilter);
     }
 
-    // Apply priority filter
     if (priorityFilter !== 'all') {
       filtered = filtered.filter(issue => issue.priority === priorityFilter);
     }
 
-    // Apply sorting
     filtered.sort((a, b) => {
       let aValue, bValue;
       
@@ -135,7 +130,6 @@ export default function Home() {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Issue Tracker</h1>
       
-      {/* Filters */}
       <div className="mb-6 space-y-4">
         <div className="flex flex-wrap gap-4">
           <input
@@ -191,14 +185,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Results count */}
       <div className="mb-4">
         <p className="text-gray-600">
           Showing {filteredIssues.length} of {allIssues.length} issues
         </p>
       </div>
 
-      {/* Issues list */}
       <div className="space-y-4">
         {filteredIssues.map(issue => (
           <div key={issue.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">

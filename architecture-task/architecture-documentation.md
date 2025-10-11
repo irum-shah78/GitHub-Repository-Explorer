@@ -1,7 +1,7 @@
 # ChatFlow - Real-Time Chat Application Architecture
 
 ## Overview
-ChatFlow is a scalable real-time messaging platform designed to handle millions of concurrent users with features including instant messaging, file sharing, message reactions, and comprehensive admin controls.
+ChatFlow is a scalable real-time messaging platform designed to handle millions of concurrent users with features including instant messaging, file sharing, message reactions and comprehensive admin controls.
 
 ## Tech Stack
 
@@ -36,57 +36,57 @@ ChatFlow is a scalable real-time messaging platform designed to handle millions 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        CLIENT LAYER                            │
+│                        CLIENT LAYER                             │
 ├─────────────────────────────────────────────────────────────────┤
-│  Web App (React/Next.js)  │  Mobile App (React Native)         │
-│  - Real-time UI           │  - Push notifications              │
-│  - State management       │  - Offline support                 │
-│  - File uploads           │  - Native features                 │
+│  Web App (React/Next.js)  │  Mobile App (React Native)          │
+│  - Real-time UI           │  - Push notifications               │
+│  - State management       │  - Offline support                  │
+│  - File uploads           │  - Native features                  │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 │ HTTPS/WSS
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    LOAD BALANCER LAYER                         │
+│                    LOAD BALANCER LAYER                          │
 ├─────────────────────────────────────────────────────────────────┤
-│  Nginx Load Balancer                                           │
-│  - SSL termination                                            │
-│  - Request routing                                            │
-│  - Rate limiting                                             │
+│  Nginx Load Balancer                                            │
+│  - SSL termination                                              │
+│  - Request routing                                              │
+│  - Rate limiting                                                │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    APPLICATION LAYER                          │
+│                    APPLICATION LAYER                            │
 ├─────────────────────────────────────────────────────────────────┤
-│  API Gateway          │  WebSocket Gateway                     │
-│  - REST endpoints     │  - Real-time messaging                 │
+│  API Gateway          │  WebSocket Gateway                      │
+│  - REST endpoints     │  - Real-time messaging                  │
 │  - Authentication     │  - Connection management                │
-│  - Rate limiting      │  - Message broadcasting                │
-│  - Request validation │  - Presence management                 │
+│  - Rate limiting      │  - Message broadcasting                 │
+│  - Request validation │  - Presence management                  │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                    SERVICE LAYER                               │
-├─────────────────────────────────────────────────────────────────┤
-│  User Service    │  Chat Service    │  File Service    │  Notification Service │
-│  - Registration  │  - Message CRUD  │  - File upload   │  - Push notifications │
-│  - Authentication│  - Room management│  - Image resize  │  - Email alerts      │
-│  - Profile mgmt  │  - Message search│  - CDN delivery  │  - SMS alerts        │
-│  - Role management│  - Typing indicators│  - Virus scan   │  - Webhook delivery │
-└─────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────────┐
+│                         SERVICE LAYER                                                 │
+├───────────────────────────────────────────────────────────────────────────────────────┤
+│  User Service     │  Chat Service       │  File Service    │  Notification Service    │
+│  - Registration   │  - Message CRUD     │  - File upload   │  - Push notifications    │
+│  - Authentication │  - Room management  │  - Image resize  │  - Email alerts          │
+│  - Profile mgmt   │  - Message search   │  - CDN delivery  │  - SMS alerts            │
+│  - Role management│  - Typing indicators│  - Virus scan    │  - Webhook delivery      │
+└───────────────────────────────────────────────────────────────────────────────────────┘
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
 │                    DATA LAYER                                   │
 ├─────────────────────────────────────────────────────────────────┤
-│  PostgreSQL (Primary)  │  Redis (Cache)    │  S3 (Files)       │
-│  - Users               │  - Sessions       │  - Images         │
-│  - Messages            │  - Online status  │  - Documents      │
-│  - Channels            │  - Rate limits    │  - Videos         │
-│  - Reactions           │  - Message queue  │  - Backups        │
-│  - Notifications       │  - Pub/Sub        │                   │
+│  PostgreSQL (Primary)  │  Redis (Cache)    │  S3 (Files)        │
+│  - Users               │  - Sessions       │  - Images          │
+│  - Messages            │  - Online status  │  - Documents       │
+│  - Channels            │  - Rate limits    │  - Videos          │
+│  - Reactions           │  - Message queue  │  - Backups         │
+│  - Notifications       │  - Pub/Sub        │                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -302,4 +302,4 @@ CREATE INDEX idx_channel_members_channel ON channel_members(channel_id);
 - **Performance Analytics**: Load times, connection stability, user satisfaction
 - **Business Intelligence**: User growth, retention rates, revenue metrics
 
-This architecture provides a solid foundation for building a scalable, secure, and performant real-time chat application that can handle millions of concurrent users while maintaining excellent user experience.
+This architecture provides a solid foundation for building a scalable, secure and performant real-time chat application that can handle millions of concurrent users while maintaining excellent user experience.
