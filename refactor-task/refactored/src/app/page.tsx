@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { IssueFilters } from './components/IssueFilters';
 import { Issue,  IssueStatus, IssuePriority, SortField, SortOrder } from './types/issue';
@@ -5,7 +6,7 @@ import { IssueCard } from './components/IssueCard';
 import { LoadingSpinner } from './components/LoadingSpinner';
 import { useIssueFilters } from './hooks/useIssueFilters';
 import { useIssueSorting } from './hooks/useIssueSorting';
-import issuesData from '../../../src/app/constants/issues.json';
+import issuesData from '../constants/issues.json';
 
 const issues = issuesData as Issue[];
 
@@ -47,6 +48,27 @@ export default function IssueTracker() {
     fetchIssues();
   }, []);
 
+  const compareIssues = useCallback((a: Issue, b: Issue, field: SortField): number => {
+    switch (field) {
+      case 'title':
+      case 'assignee':
+        return a[field].toLowerCase().localeCompare(b[field].toLowerCase());
+      
+      case 'status':
+        return a.status.localeCompare(b.status);
+      
+      case 'priority':
+        const priorityOrder: Record<IssuePriority, number> = { high: 3, medium: 2, low: 1 };
+        return (priorityOrder[a.priority] || 0) - (priorityOrder[b.priority] || 0);
+      
+      case 'createdDate':
+        return new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime();
+      
+      default:
+        return 0;
+    }
+  }, []);
+
   const processedIssues = useMemo(() => {
     let filtered = allIssues;
 
@@ -71,28 +93,7 @@ export default function IssueTracker() {
       const comparison = compareIssues(a, b, sortField);
       return sortOrder === 'asc' ? comparison : -comparison;
     });
-  }, [allIssues, searchTerm, statusFilter, priorityFilter, sortField, sortOrder]);
-
-  const compareIssues = useCallback((a: Issue, b: Issue, field: SortField): number => {
-    switch (field) {
-      case 'title':
-      case 'assignee':
-        return a[field].toLowerCase().localeCompare(b[field].toLowerCase());
-      
-      case 'status':
-        return a.status.localeCompare(b.status);
-      
-      case 'priority':
-        const priorityOrder: Record<IssuePriority, number> = { high: 3, medium: 2, low: 1 };
-        return (priorityOrder[a.priority] || 0) - (priorityOrder[b.priority] || 0);
-      
-      case 'createdDate':
-        return new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime();
-      
-      default:
-        return 0;
-    }
-  }, []);
+  }, [allIssues, searchTerm, statusFilter, priorityFilter, sortField, sortOrder, compareIssues]);
 
   const handleSortFieldChange = useCallback((field: SortField) => {
     if (field === sortField) {
@@ -108,10 +109,10 @@ export default function IssueTracker() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
-      <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">Issue Tracker</h1>
-        <p className="text-gray-600">Manage and track project issues efficiently</p>
+    <div className="container">
+      <header>
+        <h1>Issue Tracker</h1>
+        <p>Manage and track project issues efficiently</p>
       </header>
       
       <IssueFilters
@@ -129,7 +130,7 @@ export default function IssueTracker() {
       />
 
       <div className="mb-6">
-        <p className="text-gray-600">
+        <p>
           Showing <span className="font-semibold">{processedIssues.length}</span> of{' '}
           <span className="font-semibold">{allIssues.length}</span> issues
         </p>
@@ -141,14 +142,14 @@ export default function IssueTracker() {
             <IssueCard key={issue.id} issue={issue} />
           ))
         ) : (
-          <div className="text-center py-12">
-            <div className="text-gray-400 mb-2">
-              <svg className="mx-auto h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="empty-state">
+            <div className="empty-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-1">No issues found</h3>
-            <p className="text-gray-500">Try adjusting your search criteria or filters.</p>
+            <h3 className="empty-title">No issues found</h3>
+            <p className="empty-description">Try adjusting your search criteria or filters.</p>
           </div>
         )}
       </div>

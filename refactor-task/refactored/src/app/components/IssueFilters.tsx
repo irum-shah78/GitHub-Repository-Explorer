@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { IssueStatus, IssuePriority, SortField, SortOrder, ISSUE_STATUSES, ISSUE_PRIORITIES, SORT_FIELDS } from '../types/issue';
 
@@ -31,11 +33,11 @@ export function IssueFilters({
   const hasActiveFilters = searchTerm || statusFilter !== 'all' || priorityFilter !== 'all';
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6 shadow-sm">
+    <div className="bg-white border rounded-lg p-6 mb-6 shadow-sm">
       <div className="flex flex-wrap gap-4 items-end">
         {/* Search Input */}
         <div className="flex-1 min-w-64">
-          <label htmlFor="search" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="search">
             Search Issues
           </label>
           <input
@@ -44,20 +46,18 @@ export function IssueFilters({
             placeholder="Search by title, description, or assignee..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </div>
 
         {/* Status Filter */}
         <div className="min-w-32">
-          <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="status">
             Status
           </label>
           <select
             id="status"
             value={statusFilter}
             onChange={(e) => onStatusChange(e.target.value as IssueStatus | 'all')}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="all">All Statuses</option>
             {ISSUE_STATUSES.map(status => (
@@ -70,14 +70,13 @@ export function IssueFilters({
 
         {/* Priority Filter */}
         <div className="min-w-32">
-          <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="priority">
             Priority
           </label>
           <select
             id="priority"
             value={priorityFilter}
             onChange={(e) => onPriorityChange(e.target.value as IssuePriority | 'all')}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="all">All Priorities</option>
             {ISSUE_PRIORITIES.map(priority => (
@@ -90,14 +89,13 @@ export function IssueFilters({
 
         {/* Sort Field */}
         <div className="min-w-32">
-          <label htmlFor="sortField" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="sortField">
             Sort By
           </label>
           <select
             id="sortField"
             value={sortField}
             onChange={(e) => onSortFieldChange(e.target.value as SortField)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             {SORT_FIELDS.map(field => (
               <option key={field} value={field}>
@@ -109,14 +107,13 @@ export function IssueFilters({
 
         {/* Sort Order */}
         <div className="min-w-32">
-          <label htmlFor="sortOrder" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="sortOrder">
             Order
           </label>
           <select
             id="sortOrder"
             value={sortOrder}
             onChange={(e) => onSortOrderChange(e.target.value as SortOrder)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
@@ -127,7 +124,6 @@ export function IssueFilters({
         {hasActiveFilters && (
           <button
             onClick={onClearFilters}
-            className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
           >
             Clear Filters
           </button>

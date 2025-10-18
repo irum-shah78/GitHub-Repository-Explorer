@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Fix login authentication bug",
+    "status": "open",
+    "priority": "high",
+    "assignee": "John Doe",
+    "createdDate": "2024-01-15T10:30:00Z",
+    "description": "Users are unable to log in with their credentials. The authentication system is not validating passwords correctly."
+  },
+  {
+    "id": 2,
+    "title": "Add dark mode support",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "Jane Smith",
+    "createdDate": "2024-01-14T14:20:00Z",
+    "description": "Implement dark mode toggle in the application settings. Users have requested this feature for better user experience."
+  },
+  {
+    "id": 3,
+    "title": "Optimize database queries",
+    "status": "closed",
+    "priority": "high",
+    "assignee": "Mike Johnson",
+    "createdDate": "2024-01-13T09:15:00Z",
+    "description": "Database queries are running slowly. Need to add proper indexes and optimize the query structure."
+  },
+  {
+    "id": 4,
+    "title": "Update user profile page",
+    "status": "open",
+    "priority": "low",
+    "assignee": "Sarah Wilson",
+    "createdDate": "2024-01-12T16:45:00Z",
+    "description": "Redesign the user profile page to include more information and better layout."
+  },
+  {
+    "id": 5,
+    "title": "Fix responsive design issues",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "Alex Brown",
+    "createdDate": "2024-01-11T11:30:00Z",
+    "description": "The application layout breaks on mobile devices. Need to fix CSS media queries and responsive design."
+  },
+  {
+    "id": 6,
+    "title": "Add email notifications",
+    "status": "open",
+    "priority": "medium",
+    "assignee": "Emily Davis",
+    "createdDate": "2024-01-10T13:20:00Z",
+    "description": "Implement email notification system for important updates and alerts."
+  },
+  {
+    "id": 7,
+    "title": "Refactor API endpoints",
+    "status": "closed",
+    "priority": "high",
+    "assignee": "David Miller",
+    "createdDate": "2024-01-09T08:45:00Z",
+    "description": "Restructure API endpoints to follow RESTful conventions and improve maintainability."
+  },
+  {
+    "id": 8,
+    "title": "Add unit tests",
+    "status": "in-progress",
+    "priority": "medium",
+    "assignee": "Lisa Anderson",
+    "createdDate": "2024-01-08T15:10:00Z",
+    "description": "Write comprehensive unit tests for all components and utility functions."
+  },
+  {
+    "id": 9,
+    "title": "Fix memory leak in dashboard",
+    "status": "open",
+    "priority": "high",
+    "assignee": "Tom Wilson",
+    "createdDate": "2024-01-07T12:30:00Z",
+    "description": "Dashboard component is causing memory leaks due to improper cleanup of event listeners."
+  },
+  {
+    "id": 10,
+    "title": "Implement file upload feature",
+    "status": "open",
+    "priority": "low",
+    "assignee": "Rachel Green",
+    "createdDate": "2024-01-06T10:15:00Z",
+    "description": "Add ability for users to upload and manage files in their accounts."
+  }
+]
